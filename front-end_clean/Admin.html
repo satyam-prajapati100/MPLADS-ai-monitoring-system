@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nirikshak | Central Officer Dashboard</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Shared layout styles, then this page's own -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body data-page="dashboard">
+
+  <!-- Sidebar + mobile overlay are injected here by common.js -->
+  <div id="app-shell"></div>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div class="top-left">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="page-title">
+          <h1>Central Monitoring Dashboard</h1>
+          <p>National overview of MPLADS implementation</p>
+        </div>
+      </div>
+
+      <!-- Demo badge + notifications + logout are injected here by common.js -->
+      <div id="top-actions-root"></div>
+    </header>
+
+    <section class="content">
+
+      <div class="welcome">
+        <h2>Good Morning, Central Officer 👋</h2>
+        <p>Monitor national MPLADS projects, risks and AI-generated insights from one place.</p>
+      </div>
+
+      <!-- KPI CARDS -->
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+            <span class="stat-change">+4.8%</span>
+          </div>
+          <div class="stat-number counter" id="totalProjects">12550</div>
+          <div class="stat-label">Total Projects</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <span class="stat-change warning">Needs Review</span>
+          </div>
+          <div class="stat-number counter" id="highRiskProjects">120</div>
+          <div class="stat-label">High Risk Projects</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon"><i class="fa-regular fa-clock"></i></div>
+            <span class="stat-change warning">Attention</span>
+          </div>
+          <div class="stat-number counter" id="delayedProjects">100</div>
+          <div class="stat-label">Delayed Projects</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <span class="stat-change">Healthy</span>
+          </div>
+          <div class="stat-number" id="fundUtilization">78%</div>
+          <div class="stat-label">Fund Utilization</div>
+        </div>
+
+      </div>
+
+      <!-- MAP + AI -->
+      <div class="dashboard-grid">
+
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h3>National Monitoring Overview</h3>
+              <p>AI-detected risk distribution across states</p>
+            </div>
+            <button class="view-btn" id="viewMapBtn">View Details</button>
+          </div>
+
+          <div class="map-container">
+
+            <!-- REAL INDIA MAP -->
+            <div id="indiaMap"></div>
+
+            <!-- MAP LEGEND -->
+            <div class="map-legend">
+
+              <div class="legend-item">
+                <span class="legend-dot legend-high"></span>
+                High Risk
+              </div>
+
+              <div class="legend-item">
+                <span class="legend-dot legend-medium"></span>
+                Medium Risk
+              </div>
+
+              <div class="legend-item">
+                <span class="legend-dot legend-normal"></span>
+                Normal
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>AI Monitoring Insights</h3>
+                <p>Automatically detected patterns</p>
+              </div>
+              <button class="view-btn" id="viewAIInsightsBtn">View All</button>
+            </div>
+
+            <div class="ai-content">
+
+              <div class="ai-item">
+                <div class="ai-icon danger"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                  <h4>Unusual Cost Pattern</h4>
+                  <p>14 projects show expenditure significantly higher than similar projects.</p>
+                </div>
+              </div>
+
+              <div class="ai-item">
+                <div class="ai-icon warning"><i class="fa-regular fa-clock"></i></div>
+                <div>
+                  <h4>Delay Risk Detected</h4>
+                  <p>27 projects have a high probability of missing their expected completion timeline.</p>
+                </div>
+              </div>
+
+              <div class="ai-item">
+                <div class="ai-icon danger"><i class="fa-solid fa-copy"></i></div>
+                <div>
+                  <h4>Possible Duplicate Works</h4>
+                  <p>8 projects contain similar location, cost and project attributes.</p>
+                </div>
+              </div>
+
+              <div class="ai-item">
+                <div class="ai-icon"><i class="fa-solid fa-chart-column"></i></div>
+                <div>
+                  <h4>Fund Utilization Trend</h4>
+                  <p>National fund utilization is showing a positive trend compared with the previous period.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RISK ALERTS -->
+        <div class="panel spaced">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h3>High Priority Risk Alerts</h3>
+              <p>Projects requiring immediate review</p>
+            </div>
+            <button class="view-btn" id="viewAllAlertsBtn">View All Alerts</button>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table class="risk-table">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Location</th>
+                  <th>Risk Reason</th>
+                  <th>Risk Level</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>
+                    <div class="project-name">Community Health Centre</div>
+                    <div class="project-id">MPL-2026-00124</div>
+                  </td>
+                  <td>Bhopal, Madhya Pradesh</td>
+                  <td>Cost deviation detected</td>
+                  <td><span class="risk-badge risk-high"><i class="fa-solid fa-circle"></i>High</span></td>
+                  <td><button class="review-btn" data-project-id="MPL-2026-00124">Review</button></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="project-name">Rural Road Development</div>
+                    <div class="project-id">MPL-2026-00481</div>
+                  </td>
+                  <td>Jaipur, Rajasthan</td>
+                  <td>Significant project delay</td>
+                  <td><span class="risk-badge risk-high"><i class="fa-solid fa-circle"></i>High</span></td>
+                  <td><button class="review-btn" data-project-id="MPL-2026-00481">Review</button></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="project-name">Government School Building</div>
+                    <div class="project-id">MPL-2026-00672</div>
+                  </td>
+                  <td>Lucknow, Uttar Pradesh</td>
+                  <td>Unusual expenditure pattern</td>
+                  <td><span class="risk-badge risk-medium"><i class="fa-solid fa-circle"></i>Medium</span></td>
+                  <td><button class="review-btn" data-project-id="MPL-2026-00672">Review</button></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- STATE PERFORMANCE -->
+        <div class="dashboard-grid">
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>State Performance</h3>
+                <p>Fund utilization overview</p>
+              </div>
+              <button class="view-btn" id="statePerformanceBtn">Compare</button>
+            </div>
+
+            <div class="state-list">
+
+              <div class="state-row">
+                <div class="state-info">
+                  <span class="state-name">Madhya Pradesh</span>
+                  <span class="state-value">91%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" data-width="91"></div>
+                </div>
+              </div>
+
+              <div class="state-row">
+                <div class="state-info">
+                  <span class="state-name">Maharashtra</span>
+                  <span class="state-value">87%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" data-width="87"></div>
+                </div>
+              </div>
+
+              <div class="state-row">
+                <div class="state-info">
+                  <span class="state-name">Gujarat</span>
+                  <span class="state-value">83%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" data-width="83"></div>
+                </div>
+              </div>
+
+              <div class="state-row">
+                <div class="state-info">
+                  <span class="state-name">Rajasthan</span>
+                  <span class="state-value">79%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" data-width="79"></div>
+                </div>
+              </div>
+
+              <div class="state-row">
+                <div class="state-info">
+                  <span class="state-name">Uttar Pradesh</span>
+                  <span class="state-value">74%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" data-width="74"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- SYSTEM STATUS -->
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <h3>Monitoring System Status</h3>
+                <p>AI pipeline and data services</p>
+              </div>
+            </div>
+
+            <div class="ai-content">
+
+              <div class="ai-item">
+                <div class="ai-icon"><i class="fa-solid fa-database"></i></div>
+                <div>
+                  <h4>MPLADS Data Pipeline</h4>
+                  <p>Last synchronization completed successfully.</p>
+                </div>
+              </div>
+
+              <div class="ai-item">
+                <div class="ai-icon"><i class="fa-solid fa-brain"></i></div>
+                <div>
+                  <h4>Anomaly Detection Model</h4>
+                  <p>AI monitoring service is operational.</p>
+                </div>
+              </div>
+
+              <div class="ai-item">
+                <div class="ai-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <h4>Security Status</h4>
+                  <p>No critical system security issues detected.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h3>Quick Actions</h3>
+              <p>Frequently used monitoring tools</p>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+
+            <button class="quick-action" data-action="risk">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <h4>Review Risk Alerts</h4>
+              <p>Investigate high priority projects</p>
+            </button>
+
+            <button class="quick-action" data-action="projects">
+              <i class="fa-solid fa-building"></i>
+              <h4>Explore Projects</h4>
+              <p>Search and filter MPLADS projects</p>
+            </button>
+
+            <button class="quick-action" data-action="report">
+              <i class="fa-solid fa-file-export"></i>
+              <h4>Generate Report</h4>
+              <p>Create monitoring reports</p>
+            </button>
+
+            <button class="quick-action" data-action="analytics">
+              <i class="fa-solid fa-chart-line"></i>
+              <h4>Open Analytics</h4>
+              <p>Explore trends and patterns</p>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- Footer is injected here by common.js -->
+        <div id="footer-root"></div>
+
+    </section>
+  </main>
+
+  <!-- Shared layout script first, then this page's own -->
+  <script src="js/common.js"></script>
+  <script src="js/api.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/dashboard.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,918 @@
+/* =========================================================
+   NIRIKSHAK — STATE PERFORMANCE PAGE
+   Works with common.css
+========================================================= */
+
+.state-performance-page {
+    padding-top: 24px;
+}
+
+
+/* =========================================================
+   PAGE INTRO
+========================================================= */
+
+.state-page-intro {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.intro-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: #e8f1ff;
+    color: #1769d2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+}
+
+.state-page-intro h2 {
+    margin: 0 0 4px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #16233d;
+}
+
+.state-page-intro p {
+    margin: 0;
+
+    font-size: 13px;
+    color: #71809a;
+}
+
+
+/* =========================================================
+   KPI CARDS
+========================================================= */
+
+.state-kpi-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.state-kpi-card {
+    min-height: 145px;
+
+    background: #ffffff;
+
+    border: 1px solid #e4ebf4;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+    gap: 15px;
+
+    box-shadow:
+        0 4px 14px rgba(26, 61, 105, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.state-kpi-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(26, 61, 105, 0.08);
+}
+
+
+.kpi-icon {
+    width: 45px;
+    height: 45px;
+
+    flex: 0 0 45px;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+.kpi-icon.blue {
+    background: #e8f1ff;
+    color: #1769d2;
+}
+
+.kpi-icon.green {
+    background: #e7f8f0;
+    color: #11956b;
+}
+
+.kpi-icon.red {
+    background: #fff0ef;
+    color: #df4038;
+}
+
+.kpi-icon.yellow {
+    background: #fff5df;
+    color: #e19a13;
+}
+
+
+.kpi-content {
+    position: relative;
+
+    min-width: 0;
+}
+
+.kpi-content span {
+    display: block;
+
+    font-size: 12px;
+    color: #738198;
+
+    margin-bottom: 6px;
+}
+
+.kpi-content strong {
+    display: block;
+
+    font-size: 29px;
+    line-height: 1.1;
+
+    color: #14233e;
+
+    margin-bottom: 5px;
+}
+
+.kpi-content small {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.kpi-content small.positive {
+    color: #12946a;
+}
+
+.kpi-content p {
+    margin: 4px 0 0;
+
+    font-size: 10px;
+    color: #9aa5b5;
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.state-main-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(340px, 0.95fr);
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.state-performance-page .panel {
+    background: #ffffff;
+
+    border: 1px solid #e4ebf4;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 4px 14px rgba(26, 61, 105, 0.035);
+
+    overflow: hidden;
+}
+
+.state-performance-page .panel-header {
+    min-height: 65px;
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #e8edf4;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.state-performance-page .panel-header h3 {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #17243d;
+}
+
+.state-performance-page .panel-header h3 i {
+    color: #1769d2;
+
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   STATE TABLE
+========================================================= */
+
+.table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.state-performance-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 12px;
+}
+
+.state-performance-table th {
+    background: #f7faff;
+
+    color: #7a879b;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.3px;
+
+    padding: 13px 16px;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+.state-performance-table td {
+    padding: 15px 16px;
+
+    border-top: 1px solid #edf1f6;
+
+    color: #53627a;
+
+    white-space: nowrap;
+}
+
+.state-performance-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.state-performance-table tbody tr:hover {
+    background: #f8fbff;
+}
+
+.state-performance-table td strong {
+    color: #26344d;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RISK NUMBERS
+========================================================= */
+
+.risk-number {
+    min-width: 30px;
+
+    padding: 5px 8px;
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    border-radius: 7px;
+
+    font-weight: 700;
+
+    font-size: 11px;
+}
+
+.risk-number.high {
+    background: #fff0ef;
+    color: #dc443c;
+}
+
+.risk-number.medium {
+    background: #fff5df;
+    color: #d28c0c;
+}
+
+.risk-number.low {
+    background: #e8f8f1;
+    color: #15916a;
+}
+
+
+/* =========================================================
+   UTILIZATION
+========================================================= */
+
+.utilization {
+    font-weight: 700;
+}
+
+.utilization.good {
+    color: #13946b;
+}
+
+.utilization.average {
+    color: #d28d13;
+}
+
+.utilization.low {
+    color: #df5046;
+}
+
+
+/* =========================================================
+   TABLE BUTTON
+========================================================= */
+
+.table-view-btn {
+    border: none;
+
+    background: #edf5ff;
+
+    color: #1769d2;
+
+    padding: 7px 13px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.table-view-btn:hover {
+    background: #1769d2;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   INDIA MAP
+========================================================= */
+
+.map-content {
+    padding: 18px 20px 20px;
+}
+
+.india-map-placeholder {
+    height: 275px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f7faff;
+
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+
+    overflow: hidden;
+}
+
+
+/*
+   Stylized India-like map placeholder.
+   Replace this with your actual India map/SVG later.
+*/
+
+.india-shape {
+    position: relative;
+
+    width: 145px;
+    height: 220px;
+
+    background: #dceaff;
+
+    clip-path: polygon(
+        45% 0%,
+        66% 8%,
+        62% 22%,
+        78% 29%,
+        68% 41%,
+        75% 53%,
+        66% 64%,
+        76% 77%,
+        60% 91%,
+        50% 100%,
+        41% 88%,
+        33% 75%,
+        37% 63%,
+        26% 52%,
+        35% 41%,
+        27% 28%,
+        39% 20%,
+        35% 9%
+    );
+}
+
+.map-dot {
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    border: 3px solid #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.map-dot.red {
+    background: #df443b;
+}
+
+.map-dot.yellow {
+    background: #e5a21a;
+}
+
+.map-dot.green {
+    background: #18a274;
+}
+
+.map-dot.blue {
+    background: #1769d2;
+}
+
+.dot-1 {
+    top: 62px;
+    left: 48px;
+}
+
+.dot-2 {
+    top: 83px;
+    left: 80px;
+}
+
+.dot-3 {
+    top: 113px;
+    left: 65px;
+}
+
+.dot-4 {
+    top: 145px;
+    left: 77px;
+}
+
+.dot-5 {
+    top: 120px;
+    left: 38px;
+}
+
+.dot-6 {
+    top: 160px;
+    left: 48px;
+}
+
+.dot-7 {
+    top: 180px;
+    left: 70px;
+}
+
+
+/* =========================================================
+   MAP LEGEND
+========================================================= */
+
+.map-legend {
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #edf1f6;
+}
+
+.map-legend div {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 10px;
+
+    color: #68758a;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+}
+
+.legend-dot.high {
+    background: #df443b;
+}
+
+.legend-dot.medium {
+    background: #e5a21a;
+}
+
+.legend-dot.low {
+    background: #18a274;
+}
+
+
+/* =========================================================
+   TOP STATES
+========================================================= */
+
+.top-states {
+    padding-top: 16px;
+}
+
+.top-states h4 {
+    margin: 0 0 10px;
+
+    font-size: 12px;
+
+    color: #27354d;
+}
+
+.top-states h4 small {
+    color: #8a96a8;
+    font-weight: 400;
+}
+
+.top-state {
+    display: grid;
+
+    grid-template-columns: 24px 1fr auto;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 0;
+
+    border-bottom: 1px solid #f0f3f7;
+
+    font-size: 11px;
+
+    color: #5d6b80;
+}
+
+.top-state:last-child {
+    border-bottom: none;
+}
+
+.top-state strong {
+    color: #26344b;
+}
+
+.rank {
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    background: #f0f4fa;
+    color: #68758a;
+}
+
+.rank-1 {
+    background: #fff1df;
+    color: #d58a0c;
+}
+
+.rank-2 {
+    background: #edf2f8;
+    color: #68788e;
+}
+
+.rank-3 {
+    background: #f8eee5;
+    color: #a97953;
+}
+
+
+/* =========================================================
+   BOTTOM GRID
+========================================================= */
+
+.state-bottom-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   RISK COMPARISON
+========================================================= */
+
+.risk-comparison {
+    padding: 20px;
+}
+
+.risk-row {
+    display: grid;
+
+    grid-template-columns:
+        145px
+        1fr
+        40px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.risk-row:last-child {
+    margin-bottom: 0;
+}
+
+.risk-row span {
+    font-size: 10px;
+
+    color: #65738a;
+}
+
+.risk-row strong {
+    font-size: 10px;
+
+    color: #28364d;
+
+    text-align: right;
+}
+
+.risk-progress {
+    height: 7px;
+
+    background: #edf1f6;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.risk-progress-bar {
+    width: 0;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    transition:
+        width 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.risk-progress-bar.high {
+    background: #df443b;
+}
+
+.risk-progress-bar.medium {
+    background: #e19a17;
+}
+
+.risk-progress-bar.yellow {
+    background: #e6ae29;
+}
+
+.risk-progress-bar.green {
+    background: #18a274;
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.chart-container {
+    height: 285px;
+
+    padding: 18px 20px 20px;
+}
+
+
+/* =========================================================
+   VIEW ALL BUTTON
+========================================================= */
+
+.view-all-btn {
+    border: none;
+
+    background: #edf5ff;
+
+    color: #1769d2;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.view-all-btn:hover {
+    background: #1769d2;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   AI INSIGHTS
+========================================================= */
+
+.ai-insights-list {
+    padding: 4px 20px;
+}
+
+.ai-insight {
+    min-height: 65px;
+
+    display: grid;
+
+    grid-template-columns: 34px 1fr 15px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border-bottom: 1px solid #edf1f6;
+}
+
+.ai-insight:last-child {
+    border-bottom: none;
+}
+
+.ai-insight p {
+    margin: 0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    color: #5d6b80;
+}
+
+.ai-insight > i {
+    color: #a4afbd;
+
+    font-size: 9px;
+}
+
+.insight-icon {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+}
+
+.insight-icon.red {
+    background: #fff0ef;
+    color: #df443b;
+}
+
+.insight-icon.yellow {
+    background: #fff5df;
+    color: #db9514;
+}
+
+.insight-icon.green {
+    background: #e8f8f1;
+    color: #15936a;
+}
+
+.insight-icon.blue {
+    background: #e9f2ff;
+    color: #1769d2;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .state-kpi-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .state-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .state-bottom-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .ai-insights-panel {
+        grid-column: span 2;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .state-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-insights-panel {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .state-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .state-kpi-card {
+        min-height: 125px;
+    }
+
+    .risk-row {
+        grid-template-columns:
+            110px
+            1fr
+            35px;
+    }
+
+    .map-legend {
+        flex-wrap: wrap;
+    }
+
+    .state-performance-table {
+        min-width: 700px;
+    }
+
+}

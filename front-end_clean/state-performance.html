@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nirikshak | State Performance</title>
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="css/common.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="css/state-performance.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SHARED APPLICATION SHELL
+    ====================================================== -->
+
+    <div id="app-shell"></div>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <h1>State Performance</h1>
+
+                <p>
+                    State-wise overview of MPLADS implementation
+                </p>
+
+            </div>
+
+            <!-- Injected by common.js -->
+            <div id="top-actions-root"></div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <section class="content state-performance-page">
+
+
+            <!-- PAGE INTRO -->
+
+            <div class="state-page-intro">
+
+                <div class="intro-icon">
+                    <i class="fa-solid fa-chart-column"></i>
+                </div>
+
+                <div>
+
+                    <h2>State Performance Overview</h2>
+
+                    <p>
+                        Track performance, projects, fund utilization
+                        and risk levels across all states.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 KPI CARDS
+            ================================================== -->
+
+            <div class="state-kpi-grid">
+
+
+                <!-- TOTAL STATES -->
+
+                <div class="state-kpi-card">
+
+                    <div class="kpi-icon blue">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+
+                    <div class="kpi-content">
+
+                        <span>Total States</span>
+
+                        <strong
+                            class="counter"
+                            data-target="28">
+                            0
+                        </strong>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            0%
+                        </small>
+
+                        <p>vs. previous year</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECTS -->
+
+                <div class="state-kpi-card">
+
+                    <div class="kpi-icon green">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </div>
+
+                    <div class="kpi-content">
+
+                        <span>Projects Monitored</span>
+
+                        <strong
+                            class="counter"
+                            data-target="12550">
+                            0
+                        </strong>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            6%
+                        </small>
+
+                        <p>vs. previous year</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HIGH RISK -->
+
+                <div class="state-kpi-card">
+
+                    <div class="kpi-icon red">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <div class="kpi-content">
+
+                        <span>High Risk Projects</span>
+
+                        <strong
+                            class="counter"
+                            data-target="120">
+                            0
+                        </strong>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            18%
+                        </small>
+
+                        <p>vs. previous year</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FUND UTILIZATION -->
+
+                <div class="state-kpi-card">
+
+                    <div class="kpi-icon yellow">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                    <div class="kpi-content">
+
+                        <span>Fund Utilization</span>
+
+                        <strong>78%</strong>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            5%
+                        </small>
+
+                        <p>vs. previous year</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 STATE TABLE + INDIA MAP
+            ================================================== -->
+
+            <div class="state-main-grid">
+
+
+                <!-- STATE PERFORMANCE TABLE -->
+
+                <div class="panel state-table-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                <i class="fa-solid fa-chart-column"></i>
+                                State-wise Performance
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="state-performance-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>State</th>
+
+                                    <th>Total Projects</th>
+
+                                    <th>High Risk</th>
+
+                                    <th>Delayed Projects</th>
+
+                                    <th>Fund Utilization</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Madhya Pradesh (MP)</strong>
+                                    </td>
+
+                                    <td>412</td>
+
+                                    <td>
+                                        <span class="risk-number high">
+                                            68
+                                        </span>
+                                    </td>
+
+                                    <td>122</td>
+
+                                    <td>
+                                        <span class="utilization good">
+                                            78.6%
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="table-view-btn"
+                                            onclick="viewState('Madhya Pradesh')">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Uttar Pradesh (UP)</strong>
+                                    </td>
+
+                                    <td>356</td>
+
+                                    <td>
+                                        <span class="risk-number high">
+                                            54
+                                        </span>
+                                    </td>
+
+                                    <td>101</td>
+
+                                    <td>
+                                        <span class="utilization average">
+                                            74.2%
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="table-view-btn"
+                                            onclick="viewState('Uttar Pradesh')">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Maharashtra (MH)</strong>
+                                    </td>
+
+                                    <td>298</td>
+
+                                    <td>
+                                        <span class="risk-number medium">
+                                            46
+                                        </span>
+                                    </td>
+
+                                    <td>87</td>
+
+                                    <td>
+                                        <span class="utilization good">
+                                            82.1%
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="table-view-btn"
+                                            onclick="viewState('Maharashtra')">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Rajasthan (RJ)</strong>
+                                    </td>
+
+                                    <td>254</td>
+
+                                    <td>
+                                        <span class="risk-number medium">
+                                            38
+                                        </span>
+                                    </td>
+
+                                    <td>72</td>
+
+                                    <td>
+                                        <span class="utilization good">
+                                            76.5%
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="table-view-btn"
+                                            onclick="viewState('Rajasthan')">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Bihar (BR)</strong>
+                                    </td>
+
+                                    <td>216</td>
+
+                                    <td>
+                                        <span class="risk-number medium">
+                                            32
+                                        </span>
+                                    </td>
+
+                                    <td>58</td>
+
+                                    <td>
+                                        <span class="utilization low">
+                                            69.8%
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="table-view-btn"
+                                            onclick="viewState('Bihar')">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Gujarat (GJ)</strong>
+                                    </td>
+
+                                    <td>198</td>
+
+                                    <td>
+                                        <span class="risk-number low">
+                                            26
+                                        </span>
+                                    </td>
+
+                                    <td>49</td>
+
+                                    <td>
+                                        <span class="utilization good">
+                                            81.3%
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="table-view-btn"
+                                            onclick="viewState('Gujarat')">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INDIA MAP -->
+
+                <div class="panel india-map-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                India Map – State Performance
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="map-content">
+
+                        <div class="india-map-placeholder">
+
+                            <div class="india-shape">
+
+                                <span class="map-dot red dot-1"></span>
+                                <span class="map-dot red dot-2"></span>
+
+                                <span class="map-dot yellow dot-3"></span>
+                                <span class="map-dot yellow dot-4"></span>
+
+                                <span class="map-dot green dot-5"></span>
+                                <span class="map-dot green dot-6"></span>
+
+                                <span class="map-dot blue dot-7"></span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MAP LEGEND -->
+
+                        <div class="map-legend">
+
+                            <div>
+                                <span class="legend-dot high"></span>
+                                High Risk
+                            </div>
+
+                            <div>
+                                <span class="legend-dot medium"></span>
+                                Medium Risk
+                            </div>
+
+                            <div>
+                                <span class="legend-dot low"></span>
+                                Low Risk
+                            </div>
+
+                        </div>
+
+
+                        <!-- TOP STATES -->
+
+                        <div class="top-states">
+
+                            <h4>Top 5 States <small>(by risk count)</small></h4>
+
+
+                            <div class="top-state">
+
+                                <span class="rank rank-1">1</span>
+
+                                <span>Madhya Pradesh</span>
+
+                                <strong>28</strong>
+
+                            </div>
+
+
+                            <div class="top-state">
+
+                                <span class="rank rank-2">2</span>
+
+                                <span>Uttar Pradesh</span>
+
+                                <strong>25</strong>
+
+                            </div>
+
+
+                            <div class="top-state">
+
+                                <span class="rank rank-3">3</span>
+
+                                <span>Maharashtra</span>
+
+                                <strong>22</strong>
+
+                            </div>
+
+
+                            <div class="top-state">
+
+                                <span class="rank rank-4">4</span>
+
+                                <span>Rajasthan</span>
+
+                                <strong>19</strong>
+
+                            </div>
+
+
+                            <div class="top-state">
+
+                                <span class="rank rank-5">5</span>
+
+                                <span>Bihar</span>
+
+                                <strong>16</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BOTTOM ANALYTICS
+            ================================================== -->
+
+            <div class="state-bottom-grid">
+
+
+                <!-- STATE RISK COMPARISON -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                <i class="fa-solid fa-chart-simple"></i>
+                                State Risk Comparison
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="risk-comparison">
+
+                        <div class="risk-row">
+
+                            <span>Madhya Pradesh (MP)</span>
+
+                            <div class="risk-progress">
+
+                                <div
+                                    class="risk-progress-bar high"
+                                    data-width="86">
+                                </div>
+
+                            </div>
+
+                            <strong>78.6</strong>
+
+                        </div>
+
+
+                        <div class="risk-row">
+
+                            <span>Uttar Pradesh (UP)</span>
+
+                            <div class="risk-progress">
+
+                                <div
+                                    class="risk-progress-bar medium"
+                                    data-width="72">
+                                </div>
+
+                            </div>
+
+                            <strong>65.4</strong>
+
+                        </div>
+
+
+                        <div class="risk-row">
+
+                            <span>Maharashtra (MH)</span>
+
+                            <div class="risk-progress">
+
+                                <div
+                                    class="risk-progress-bar yellow"
+                                    data-width="64">
+                                </div>
+
+                            </div>
+
+                            <strong>58.2</strong>
+
+                        </div>
+
+
+                        <div class="risk-row">
+
+                            <span>Rajasthan (RJ)</span>
+
+                            <div class="risk-progress">
+
+                                <div
+                                    class="risk-progress-bar green"
+                                    data-width="47">
+                                </div>
+
+                            </div>
+
+                            <strong>42.7</strong>
+
+                        </div>
+
+
+                        <div class="risk-row">
+
+                            <span>Bihar (BR)</span>
+
+                            <div class="risk-progress">
+
+                                <div
+                                    class="risk-progress-bar green"
+                                    data-width="40">
+                                </div>
+
+                            </div>
+
+                            <strong>36.5</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PERFORMANCE TRENDS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                <i class="fa-solid fa-chart-line"></i>
+                                Performance Trends
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chart-container">
+
+                        <canvas id="performanceTrendChart"></canvas>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI INSIGHTS -->
+
+                <div class="panel ai-insights-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                <i class="fa-solid fa-lightbulb"></i>
+                                AI Monitoring Insights
+                            </h3>
+
+                        </div>
+
+                        <button
+                            class="view-all-btn"
+                            onclick="window.location.href='analytics.html'">
+                            View All
+                        </button>
+
+                    </div>
+
+
+                    <div class="ai-insights-list">
+
+
+                        <div class="ai-insight">
+
+                            <div class="insight-icon red">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+
+                            <p>
+                                Madhya Pradesh has the highest
+                                risk rate among all states.
+                            </p>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+
+                        </div>
+
+
+                        <div class="ai-insight">
+
+                            <div class="insight-icon yellow">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+
+                            <p>
+                                Project delays are the top risk
+                                reason across monitored states.
+                            </p>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+
+                        </div>
+
+
+                        <div class="ai-insight">
+
+                            <div class="insight-icon green">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+
+                            <p>
+                                Risk levels have improved compared
+                                to the previous monitoring period.
+                            </p>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+
+                        </div>
+
+
+                        <div class="ai-insight">
+
+                            <div class="insight-icon blue">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+                            <p>
+                                Gujarat and Rajasthan show better
+                                compliance and lower risk.
+                            </p>
+
+                            <i class="fa-solid fa-chevron-right"></i>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div id="footer-root"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         SHARED JS FIRST
+    ====================================================== -->
+
+    <script src="js/common.js"></script>
+
+    <!-- PAGE JS -->
+    <script src="js/state-performance.js"></script>
+
+</body>
+
+</html>

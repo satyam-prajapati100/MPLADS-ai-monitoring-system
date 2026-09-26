@@ -1,0 +1,520 @@
+/* =========================================
+   MPLADS — RISK ALERTS PAGE STYLES
+   Loaded after common.css. Only what's unique
+   to this page: risk-level icon colors, the
+   filter column count, the alert table, and the
+   two AI-explanation cards at the bottom.
+========================================= */
+
+/* =========================================
+   RISK SUMMARY
+   (base card styles live in common.css —
+   this page only owns its icon color variants)
+========================================= */
+
+.summary-icon.high {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.summary-icon.medium {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.summary-icon.normal {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.summary-icon.total {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* =========================================
+   FILTER BAR
+   (base filter styles live in common.css —
+   this page only owns its column count)
+========================================= */
+
+.filters {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.filter {
+  min-width: 0;
+}
+
+.filter input,
+.filter select {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px 0 38px;
+  border: 1px solid #d9e5f2;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #172b4d;
+  font-size: 13px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.filter input:focus,
+.filter select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(23, 105, 210, 0.10);
+}
+
+.filter i {
+  position: absolute;
+  margin-left: 14px;
+  color: #6d7d91;
+  z-index: 2;
+}
+
+.reset-btn {
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid #d9e5f2;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+/* =========================================
+   ALERT TABLE
+========================================= */
+
+.alert-panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(23, 105, 210, 0.04);
+  margin-bottom: 20px;
+}
+
+.alert-count {
+  background: var(--danger-light);
+  color: var(--danger);
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.alert-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.alert-table th {
+  text-align: left;
+  padding: 13px 20px;
+  background: #f8fbff;
+  color: #7b8797;
+  font-size: 9px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.alert-table td {
+  padding: 16px 20px;
+  border-top: 1px solid #edf1f6;
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+.alert-table tbody tr {
+  transition: 0.2s ease;
+}
+
+.alert-table tbody tr:hover {
+  background: #f9fcff;
+}
+
+/* Risk badge (this page's pill is slightly larger-padded
+   than the dashboard's, so it stays page-specific) */
+
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.risk-high {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.risk-medium {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.risk-normal {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+/* Risk score */
+
+.risk-score {
+  font-weight: 800;
+  font-size: 11px;
+}
+
+.score-high {
+  color: var(--danger);
+}
+
+.score-medium {
+  color: var(--warning);
+}
+
+/* Action */
+
+.review-btn {
+  border: none;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.review-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* =========================================
+   AI EXPLANATION
+========================================= */
+
+.ai-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.ai-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(23, 105, 210, 0.04);
+}
+
+.ai-body {
+  padding: 18px 20px;
+}
+
+.explanation {
+  display: flex;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf1f6;
+}
+
+.explanation:last-child {
+  border-bottom: none;
+}
+
+.explanation-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--danger-light);
+  color: var(--danger);
+  font-size: 12px;
+}
+
+.explanation-icon.warning {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.explanation h4 {
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+
+.explanation p {
+  font-size: 9px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* =========================================
+   RISK SCORE VISUAL
+========================================= */
+
+.risk-score-box {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 10px 0;
+}
+
+.score-circle {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  background: conic-gradient(var(--danger) 0deg, var(--danger) 281deg, #edf1f6 281deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.score-circle::before {
+  content: "";
+  position: absolute;
+  width: 87px;
+  height: 87px;
+  border-radius: 50%;
+  background: white;
+}
+
+.score-value {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.score-value strong {
+  display: block;
+  font-size: 24px;
+  color: var(--danger);
+}
+
+.score-value span {
+  font-size: 8px;
+  color: var(--muted);
+}
+
+.score-info h4 {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.score-info p {
+  font-size: 9px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* =========================================
+   RECOMMENDED ACTION
+========================================= */
+
+.action-box {
+  margin-top: 15px;
+  padding: 12px;
+  background: #f8fbff;
+  border: 1px solid #e4eef9;
+  border-radius: 10px;
+}
+
+.action-box strong {
+  font-size: 10px;
+  color: var(--primary-dark);
+}
+
+.action-box p {
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   RESPONSIVE (risk-alerts-only breakpoints)
+========================================= */
+
+@media (max-width: 1200px) {
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .filters { grid-template-columns: 1fr 1fr; }
+  .ai-section { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 550px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  .filters { grid-template-columns: 1fr; }
+}
+
+
+
+
+
+
+/* =========================================
+   PAGE SIZE / CARD POLISH
+========================================= */
+
+.content {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.page-intro h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #142b4a;
+}
+
+.page-intro p {
+  font-size: 13px;
+  color: #68788d;
+  margin-top: 6px;
+}
+
+/* Summary cards */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.summary-card {
+  background: #ffffff;
+  border: 1px solid #dfe8f2;
+  border-radius: 15px;
+  padding: 20px;
+  min-height: 130px;
+  box-shadow: 0 5px 18px rgba(23, 105, 210, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(23, 105, 210, 0.10);
+}
+
+.summary-number {
+  margin-top: 12px;
+  font-size: 27px;
+  font-weight: 800;
+  color: #142b4a;
+}
+
+.summary-label {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #718096;
+}
+
+/* Filter panel */
+
+.filter-panel {
+  background: #ffffff;
+  border: 1px solid #dfe8f2;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 18px rgba(23, 105, 210, 0.05);
+}
+
+.filter-header {
+  margin-bottom: 17px;
+}
+
+.filter-header h3 {
+  font-size: 16px;
+  font-weight: 750;
+  color: #142b4a;
+  margin: 0;
+}
+
+.filter-header span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #7a8797;
+}
+
+/* Alert table */
+
+.alert-table th {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 14px 20px;
+}
+
+.alert-table td {
+  font-size: 12px;
+  padding: 16px 20px;
+}
+
+.project-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #172b4d;
+}
+
+.project-id {
+  font-size: 10px;
+  color: #7b8797;
+  margin-top: 4px;
+}
+
+.review-btn {
+  font-size: 11px;
+  padding: 8px 13px;
+  border-radius: 8px;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .alert-table {
+    min-width: 850px;
+  }
+}

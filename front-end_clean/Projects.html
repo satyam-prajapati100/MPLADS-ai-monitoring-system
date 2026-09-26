@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MPLADS | Projects</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Shared layout styles, then this page's own -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/projects.css">
+</head>
+<body data-page="projects">
+
+<!-- Sidebar + mobile overlay are injected here by common.js -->
+<div id="app-shell"></div>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="top-left">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="page-title">
+        <h1>Projects</h1>
+        <p>National MPLADS project monitoring</p>
+      </div>
+    </div>
+
+    <!-- Demo badge + notifications + logout are injected here by common.js -->
+    <div id="top-actions-root"></div>
+  </header>
+
+  <section class="content">
+
+    <div class="page-intro">
+      <h2>MPLADS Projects</h2>
+      <p>Search, monitor and review projects across states and districts.</p>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary-grid">
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon blue"><i class="fa-solid fa-building"></i></div>
+        </div>
+        <div class="summary-number">12,450</div>
+        <div class="summary-label">Total Projects</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon green"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+        <div class="summary-number">8,921</div>
+        <div class="summary-label">Completed Projects</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon orange"><i class="fa-solid fa-spinner"></i></div>
+        </div>
+        <div class="summary-number">3,002</div>
+        <div class="summary-label">Projects In Progress</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon red"><i class="fa-solid fa-clock"></i></div>
+        </div>
+        <div class="summary-number">527</div>
+        <div class="summary-label">Delayed Projects</div>
+      </div>
+
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filter-panel">
+
+      <div class="filter-header">
+        <div>
+          <h3>Search & Filter Projects</h3>
+          <span>Find projects using location, status or risk level</span>
+        </div>
+      </div>
+
+      <div class="filters">
+
+        <div class="filter">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search project or project ID...">
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-map"></i>
+          <select id="stateFilter">
+            <option value="">All States</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-list-check"></i>
+          <select id="statusFilter">
+            <option value="">All Status</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-shield-halved"></i>
+          <select id="riskFilter" disabled title="Requires risk_results to be populated in Supabase">
+            <option value="">All Risk (coming soon)</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" id="districtFilter" placeholder="Constituency">
+        </div>
+
+        <button class="reset-btn" id="resetFiltersBtn">Reset</button>
+
+      </div>
+    </div>
+
+    <!-- PROJECT TABLE -->
+    <div class="project-panel">
+
+      <div class="panel-header">
+        <div class="panel-title">
+          <h3>Project Registry</h3>
+          <p>Current project monitoring data</p>
+        </div>
+
+        <span class="project-count" id="projectCount">— PROJECTS</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="project-table">
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Progress</th>
+              <th>Expenditure</th>
+              <th>Risk</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="projectTable">
+            <!-- Rows are rendered by projects.js from Supabase -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="text-align:center; padding:16px;">
+        <button class="view-btn" id="loadMoreBtn" style="display:none;">Load More</button>
+      </div>
+    </div>
+
+    <!-- PROJECT INSIGHTS -->
+    <div class="insights-grid">
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h4>High Risk Projects</h4>
+        </div>
+        <p>Projects requiring immediate monitoring based on AI risk analysis.</p>
+        <div class="insight-number">342</div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-icon orange"><i class="fa-solid fa-clock"></i></div>
+          <h4>Delayed Projects</h4>
+        </div>
+        <p>Projects where progress is below the expected implementation timeline.</p>
+        <div class="insight-number">527</div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-icon"><i class="fa-solid fa-brain"></i></div>
+          <h4>AI Monitoring</h4>
+        </div>
+        <p>AI continuously analyzes project cost, progress, expenditure and patterns.</p>
+        <div class="insight-number">Active</div>
+      </div>
+
+    </div>
+
+    <!-- Footer is injected here by common.js -->
+    <div id="footer-root"></div>
+
+  </section>
+</main>
+
+<!-- Supabase client (loaded before common.js so projects.js can use it) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+
+<!-- Shared layout script first, then this page's own -->
+<script src="js/common.js"></script>
+<script src="js/projects.js"></script>
+
+</body>
+</html>

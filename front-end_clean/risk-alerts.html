@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MPLADS | Risk Alerts</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Shared layout styles, then this page's own -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/risk-alerts.css">
+</head>
+
+<body data-page="risk-alerts">
+
+  <!-- Sidebar + mobile overlay are injected here by common.js -->
+  <div id="app-shell"></div>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div class="top-left">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="page-title">
+          <h1>Risk Alerts</h1>
+          <p>AI-powered identification of high-risk MPLADS projects</p>
+        </div>
+      </div>
+
+      <!-- Demo badge + notifications + logout are injected here by common.js -->
+      <div id="top-actions-root"></div>
+    </header>
+
+    <section class="content">
+
+      <div class="page-intro">
+        <h2>Risk Monitoring Center</h2>
+        <p>Review AI-generated alerts, investigate unusual project patterns and prioritize inspections.</p>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="summary-grid">
+
+        <div class="summary-card">
+          <div class="summary-top">
+            <div class="summary-icon total"><i class="fa-solid fa-shield-halved"></i></div>
+          </div>
+          <div class="summary-number" id="totalHighRiskAlerts">0</div>
+          <div class="summary-label">Total High-Risk Alerts</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-top">
+            <div class="summary-icon high"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          </div>
+          <div class="summary-number" id="criticalRisk">0</div>
+          <div class="summary-label">Critical Risk</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-top">
+            <div class="summary-icon medium"><i class="fa-solid fa-clock"></i></div>
+          </div>
+          <div class="summary-number" id="mediumRisk">0</div>
+          <div class="summary-label">Medium Risk</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-top">
+            <div class="summary-icon normal"><i class="fa-solid fa-circle-check"></i></div>
+          </div>
+          <div class="summary-number" id="alertsReviewed">0</div>
+          <div class="summary-label">Alerts Reviewed</div>
+        </div>
+
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filter-panel">
+
+        <div class="filter-header">
+          <div>
+            <h3>Filter Risk Alerts</h3>
+            <span>Narrow down projects requiring attention</span>
+          </div>
+        </div>
+
+        <div class="filters">
+
+          <div class="filter">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search project or ID...">
+          </div>
+
+          <div class="filter">
+            <i class="fa-solid fa-map"></i>
+            <select id="stateFilter">
+              <option value="">All States</option>
+              <option>Madhya Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Rajasthan</option>
+              <option>Uttar Pradesh</option>
+              <option>Gujarat</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <i class="fa-solid fa-shield"></i>
+            <select id="riskFilter">
+              <option value="">All Risk Levels</option>
+              <option value="High">High Risk</option>
+              <option value="Medium">Medium Risk</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <i class="fa-solid fa-filter"></i>
+            <select>
+              <option>All Risk Types</option>
+              <option>Cost Anomaly</option>
+              <option>Project Delay</option>
+              <option>Duplicate Work</option>
+              <option>Fund Utilization</option>
+            </select>
+          </div>
+
+          <button class="reset-btn" id="resetFiltersBtn">Reset</button>
+
+        </div>
+      </div>
+
+      <!-- ALERT TABLE -->
+      <div class="alert-panel">
+
+        <div class="panel-header">
+          <div class="panel-title">
+            <h3>Active Risk Alerts</h3>
+            <p>AI-generated project risk assessments</p>
+          </div>
+
+          <span class="alert-count">18 HIGH PRIORITY</span>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="alert-table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Location</th>
+                <th>Risk Type</th>
+                <th>Risk Score</th>
+                <th>Risk Level</th>
+                <th>Detected</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="alertTable">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- AI EXPLANATION -->
+      <div class="ai-section">
+
+        <!-- WHY FLAGGED -->
+        <div class="ai-card">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h3>Why Are Projects Being Flagged?</h3>
+              <p>AI detection categories</p>
+            </div>
+          </div>
+
+          <div class="ai-body">
+
+            <div class="explanation">
+              <div class="explanation-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+              <div>
+                <h4>Cost Anomaly</h4>
+                <p>Project expenditure is significantly different from comparable projects with similar characteristics.
+                </p>
+              </div>
+            </div>
+
+            <div class="explanation">
+              <div class="explanation-icon warning"><i class="fa-regular fa-clock"></i></div>
+              <div>
+                <h4>Delay Risk</h4>
+                <p>Current progress and timeline indicate a higher probability of delayed completion.</p>
+              </div>
+            </div>
+
+            <div class="explanation">
+              <div class="explanation-icon"><i class="fa-solid fa-copy"></i></div>
+              <div>
+                <h4>Duplicate Pattern</h4>
+                <p>Similar project attributes such as location, category, cost or description were detected.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- AI SCORE -->
+        <div class="ai-card">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h3>AI Risk Assessment</h3>
+              <p>Example selected project</p>
+            </div>
+          </div>
+
+          <div class="ai-body">
+
+            <div class="risk-score-box">
+              <div class="score-circle" id="scoreCircle">
+                <div class="score-value">
+                  <strong id="aiRiskScore">0</strong>
+                  <span>RISK SCORE</span>
+                </div>
+              </div>
+
+              <div class="score-info">
+                <h4 id="aiRiskLevel">Loading...</h4>
+                <p id="aiProjectName">Loading...</p>
+                <p id="aiProjectId">Loading...</p>
+              </div>
+
+              <div class="action-box">
+                <strong>
+                  <i class="fa-solid fa-lightbulb"></i>
+                  Recommended Action
+                </strong>
+
+                <p id="aiRecommendedAction">
+                  Loading recommendation...
+                </p>
+              </div>
+
+            </div>
+          </div>
+          
+
+        </div>
+
+        <!-- Footer is injected here by common.js -->
+        <div id="footer-root"></div>
+
+    </section>
+  </main>
+
+  <!-- Shared layout script first, then this page's own -->
+  <script src="js/common.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/risk-alerts.js"></script>
+
+</body>
+
+</html>

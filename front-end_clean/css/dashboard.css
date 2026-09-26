@@ -1,0 +1,459 @@
+/* =========================================
+   MPLADS — DASHBOARD PAGE STYLES
+   Loaded after common.css. Only what's unique
+   to this page: KPI cards, map, AI insights,
+   risk table, state list, quick actions.
+========================================= */
+
+.welcome {
+  margin-bottom: 22px;
+}
+
+.welcome h2 {
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.welcome p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* =========================
+   KPI CARDS
+========================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(23, 105, 210, 0.04);
+  transition: 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(23, 105, 210, 0.1);
+}
+
+.stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 17px;
+}
+
+.stat-change {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 5px 8px;
+  border-radius: 20px;
+  background: #e9f8f1;
+  color: var(--success);
+}
+
+.stat-change.warning {
+  background: #fff4df;
+  color: var(--warning);
+}
+
+.stat-number {
+  margin-top: 15px;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.stat-label {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* =========================
+   GRID + PANEL CONTAINER
+========================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(23, 105, 210, 0.04);
+  overflow: hidden;
+}
+
+.panel.spaced {
+  margin-bottom: 20px;
+}
+
+/* =========================
+   INDIA MAP
+========================= */
+
+.map-container {
+  height: 350px;
+  position: relative;
+  background: radial-gradient(circle at center, #f7fbff, #edf6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.india-map {
+  position: relative;
+  width: 230px;
+  height: 285px;
+  clip-path: polygon(
+    39% 0%, 57% 7%, 64% 17%, 76% 22%, 69% 32%, 76% 41%,
+    70% 53%, 78% 65%, 68% 75%, 59% 90%, 51% 100%, 43% 88%,
+    37% 75%, 30% 64%, 22% 54%, 28% 43%, 20% 34%, 29% 24%, 25% 13%
+  );
+  background: #dcecff;
+  border: 1px solid #b6d4f6;
+}
+
+.map-dot {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid white;
+  box-shadow: 0 0 0 4px rgba(23, 105, 210, 0.15);
+  animation: pulse 2s infinite;
+}
+
+.dot-1 { top: 80px; left: 105px; }
+
+.dot-2 {
+  top: 135px;
+  left: 88px;
+  background: var(--danger);
+  box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.12);
+}
+
+.dot-3 {
+  top: 165px;
+  left: 130px;
+  background: var(--warning);
+  box-shadow: 0 0 0 4px rgba(217, 130, 0, 0.12);
+}
+
+.dot-4 { top: 205px; left: 103px; }
+
+.dot-5 {
+  top: 115px;
+  left: 143px;
+  background: var(--danger);
+  box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.12);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.map-legend {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  display: flex;
+  gap: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legend-high { background: var(--danger); }
+.legend-medium { background: var(--warning); }
+.legend-normal { background: var(--primary); }
+
+/* =========================
+   AI INSIGHTS / SYSTEM STATUS LIST
+========================= */
+
+.ai-content {
+  padding: 15px 18px;
+}
+
+.ai-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #edf1f6;
+  animation: slideIn 0.5s ease forwards;
+}
+
+.ai-item:last-child {
+  border-bottom: none;
+}
+
+.ai-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.ai-icon.danger {
+  background: #fff0ee;
+  color: var(--danger);
+}
+
+.ai-icon.warning {
+  background: #fff6e5;
+  color: var(--warning);
+}
+
+.ai-item h4 {
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.ai-item p {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   RISK TABLE
+========================= */
+
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.risk-table th {
+  text-align: left;
+  padding: 12px 20px;
+  background: #f8fbff;
+  color: #7b8797;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.risk-table td {
+  padding: 14px 20px;
+  border-top: 1px solid #edf1f6;
+  font-size: 10px;
+}
+
+.project-name {
+  font-weight: 700;
+}
+
+.project-id {
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 3px;
+}
+
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.risk-high {
+  background: #fff0ee;
+  color: var(--danger);
+}
+
+.risk-medium {
+  background: #fff5df;
+  color: var(--warning);
+}
+
+.review-btn {
+  border: none;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 6px 9px;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.review-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* =========================
+   STATE PERFORMANCE
+========================= */
+
+.state-list {
+  padding: 10px 20px 20px;
+}
+
+.state-row {
+  margin-top: 16px;
+}
+
+.state-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.state-name {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.state-value {
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* Dashboard progress bars start at 0 and animate in via JS */
+.state-row .progress-bar {
+  width: 0;
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 18px;
+}
+
+.quick-action {
+  border: 1px solid var(--border);
+  background: #fbfdff;
+  border-radius: 12px;
+  padding: 17px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.25s ease;
+}
+
+.quick-action:hover {
+  transform: translateY(-3px);
+  border-color: #b8d5f7;
+  background: var(--primary-light);
+}
+
+.quick-action i {
+  color: var(--primary);
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.quick-action h4 {
+  font-size: 11px;
+}
+
+.quick-action p {
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+/* =========================
+   RESPONSIVE (dashboard-only breakpoints)
+========================= */
+
+@media (max-width: 1200px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 550px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .quick-grid { grid-template-columns: 1fr; }
+  .risk-table th:nth-child(3),
+  .risk-table td:nth-child(3) { display: none; }
+  .map-container { height: 300px; }
+}
+
+#indiaMap {
+    width: 100%;
+    height: 380px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.map-container {
+    position: relative;
+}
+
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+    background: #eef6ff;
+    font-family: "Inter", sans-serif;
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+}
+
+.leaflet-control-zoom a {
+    color: #1769d2 !important;
+}

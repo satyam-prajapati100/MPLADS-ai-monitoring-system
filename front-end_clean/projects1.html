@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MPLADS | Projects</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Shared layout styles, then this page's own -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/projects.css">
+</head>
+<body data-page="projects">
+
+<!-- Sidebar + mobile overlay are injected here by common.js -->
+<div id="app-shell"></div>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="top-left">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="page-title">
+        <h1>Projects</h1>
+        <p>National MPLADS project monitoring</p>
+      </div>
+    </div>
+
+    <!-- Demo badge + notifications + logout are injected here by common.js -->
+    <div id="top-actions-root"></div>
+  </header>
+
+  <section class="content">
+
+    <div class="page-intro">
+      <h2>MPLADS Projects</h2>
+      <p>Search, monitor and review projects across states and districts.</p>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary-grid">
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon blue"><i class="fa-solid fa-building"></i></div>
+        </div>
+        <div class="summary-number">12,450</div>
+        <div class="summary-label">Total Projects</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon green"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+        <div class="summary-number">8,921</div>
+        <div class="summary-label">Completed Projects</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon orange"><i class="fa-solid fa-spinner"></i></div>
+        </div>
+        <div class="summary-number">3,002</div>
+        <div class="summary-label">Projects In Progress</div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-top">
+          <div class="summary-icon red"><i class="fa-solid fa-clock"></i></div>
+        </div>
+        <div class="summary-number">527</div>
+        <div class="summary-label">Delayed Projects</div>
+      </div>
+
+    </div>
+
+    <!-- FILTERS -->
+    <div class="filter-panel">
+
+      <div class="filter-header">
+        <div>
+          <h3>Search & Filter Projects</h3>
+          <span>Find projects using location, status or risk level</span>
+        </div>
+      </div>
+
+      <div class="filters">
+
+        <div class="filter">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search project or project ID...">
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-map"></i>
+          <select id="stateFilter">
+            <option value="">All States</option>
+            <option>Madhya Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Rajasthan</option>
+            <option>Uttar Pradesh</option>
+            <option>Gujarat</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-list-check"></i>
+          <select id="statusFilter">
+            <option value="">All Status</option>
+            <option>Completed</option>
+            <option>In Progress</option>
+            <option>Delayed</option>
+            <option>Pending</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-shield-halved"></i>
+          <select id="riskFilter">
+            <option value="">All Risk</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+        </div>
+
+        <div class="filter">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" id="districtFilter" placeholder="District">
+        </div>
+
+        <button class="reset-btn" id="resetFiltersBtn">Reset</button>
+
+      </div>
+    </div>
+
+    <!-- PROJECT TABLE -->
+    <div class="project-panel">
+
+      <div class="panel-header">
+        <div class="panel-title">
+          <h3>Project Registry</h3>
+          <p>Current project monitoring data</p>
+        </div>
+
+        <span class="project-count" id="projectCount">6 PROJECTS</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="project-table">
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Progress</th>
+              <th>Expenditure</th>
+              <th>Risk</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="projectTable">
+
+            <tr>
+              <td>
+                <div class="project-name">Community Health Centre</div>
+                <div class="project-id">MPL-2026-00124</div>
+              </td>
+              <td>Bhopal, Madhya Pradesh</td>
+              <td><span class="status status-progress"><i class="fa-solid fa-spinner"></i>In Progress</span></td>
+              <td>
+                <div class="progress-container">
+                  <div class="progress-text"><span>62%</span></div>
+                  <div class="progress"><div class="progress-bar" style="width:62%"></div></div>
+                </div>
+              </td>
+              <td>₹ 42.5 L</td>
+              <td><span class="risk risk-high"><i class="fa-solid fa-circle"></i>High</span></td>
+              <td><button class="view-btn" data-project-id="MPL-2026-00124">View</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="project-name">Rural Road Development</div>
+                <div class="project-id">MPL-2026-00481</div>
+              </td>
+              <td>Jaipur, Rajasthan</td>
+              <td><span class="status status-delayed"><i class="fa-solid fa-clock"></i>Delayed</span></td>
+              <td>
+                <div class="progress-container">
+                  <div class="progress-text"><span>38%</span></div>
+                  <div class="progress"><div class="progress-bar" style="width:38%"></div></div>
+                </div>
+              </td>
+              <td>₹ 27.8 L</td>
+              <td><span class="risk risk-high"><i class="fa-solid fa-circle"></i>High</span></td>
+              <td><button class="view-btn" data-project-id="MPL-2026-00481">View</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="project-name">Government School Building</div>
+                <div class="project-id">MPL-2026-00672</div>
+              </td>
+              <td>Lucknow, Uttar Pradesh</td>
+              <td><span class="status status-progress"><i class="fa-solid fa-spinner"></i>In Progress</span></td>
+              <td>
+                <div class="progress-container">
+                  <div class="progress-text"><span>71%</span></div>
+                  <div class="progress"><div class="progress-bar" style="width:71%"></div></div>
+                </div>
+              </td>
+              <td>₹ 35.2 L</td>
+              <td><span class="risk risk-medium"><i class="fa-solid fa-circle"></i>Medium</span></td>
+              <td><button class="view-btn" data-project-id="MPL-2026-00672">View</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="project-name">Drinking Water Facility</div>
+                <div class="project-id">MPL-2026-00913</div>
+              </td>
+              <td>Indore, Madhya Pradesh</td>
+              <td><span class="status status-progress"><i class="fa-solid fa-spinner"></i>In Progress</span></td>
+              <td>
+                <div class="progress-container">
+                  <div class="progress-text"><span>54%</span></div>
+                  <div class="progress"><div class="progress-bar" style="width:54%"></div></div>
+                </div>
+              </td>
+              <td>₹ 18.4 L</td>
+              <td><span class="risk risk-medium"><i class="fa-solid fa-circle"></i>Medium</span></td>
+              <td><button class="view-btn" data-project-id="MPL-2026-00913">View</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="project-name">Community Hall</div>
+                <div class="project-id">MPL-2026-01042</div>
+              </td>
+              <td>Pune, Maharashtra</td>
+              <td><span class="status status-completed"><i class="fa-solid fa-circle-check"></i>Completed</span></td>
+              <td>
+                <div class="progress-container">
+                  <div class="progress-text"><span>100%</span></div>
+                  <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
+                </div>
+              </td>
+              <td>₹ 31.6 L</td>
+              <td><span class="risk risk-low"><i class="fa-solid fa-circle"></i>Low</span></td>
+              <td><button class="view-btn" data-project-id="MPL-2026-01042">View</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="project-name">Rural Library Building</div>
+                <div class="project-id">MPL-2026-01352</div>
+              </td>
+              <td>Surat, Gujarat</td>
+              <td><span class="status status-pending"><i class="fa-solid fa-hourglass-half"></i>Pending</span></td>
+              <td>
+                <div class="progress-container">
+                  <div class="progress-text"><span>12%</span></div>
+                  <div class="progress"><div class="progress-bar" style="width:12%"></div></div>
+                </div>
+              </td>
+              <td>₹ 8.2 L</td>
+              <td><span class="risk risk-medium"><i class="fa-solid fa-circle"></i>Medium</span></td>
+              <td><button class="view-btn" data-project-id="MPL-2026-01352">View</button></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PROJECT INSIGHTS -->
+    <div class="insights-grid">
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h4>High Risk Projects</h4>
+        </div>
+        <p>Projects requiring immediate monitoring based on AI risk analysis.</p>
+        <div class="insight-number">342</div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-icon orange"><i class="fa-solid fa-clock"></i></div>
+          <h4>Delayed Projects</h4>
+        </div>
+        <p>Projects where progress is below the expected implementation timeline.</p>
+        <div class="insight-number">527</div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-icon"><i class="fa-solid fa-brain"></i></div>
+          <h4>AI Monitoring</h4>
+        </div>
+        <p>AI continuously analyzes project cost, progress, expenditure and patterns.</p>
+        <div class="insight-number">Active</div>
+      </div>
+
+    </div>
+
+    <!-- Footer is injected here by common.js -->
+    <div id="footer-root"></div>
+
+  </section>
+</main>
+
+<!-- Shared layout script first, then this page's own -->
+<script src="js/common.js"></script>
+<script src="js/api.js"></script>
+<script src="js/projects.js"></script>
+
+</body>
+</html>

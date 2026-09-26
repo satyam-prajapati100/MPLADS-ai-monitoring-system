@@ -1,0 +1,403 @@
+/* =========================================
+   REPORTS PAGE STYLES
+   Sidebar, topbar, reset, variables, panel chrome
+   and footer all live in common.css.
+========================================= */
+
+/* ---------- STATISTICS ---------- */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  min-height: 145px;
+  padding: 20px;
+  box-shadow: 0 8px 28px rgba(37, 76, 130, 0.08);
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
+
+.stat-icon.blue { color: var(--primary); background: var(--primary-light); }
+.stat-icon.green { color: var(--success); background: var(--success-light); }
+.stat-icon.purple { color: #7c3aed; background: #f0e7ff; }
+.stat-icon.orange { color: var(--warning); background: var(--warning-light); }
+
+.stat-label {
+  color: #667a98;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 11px;
+}
+
+.stat-change {
+  font-size: 10px;
+  margin-top: 7px;
+}
+
+.stat-change.up { color: var(--success); }
+.stat-change.down { color: var(--danger); }
+
+.stat-sub {
+  color: #8a99ae;
+  margin-left: 4px;
+}
+
+/* ---------- REPORT GENERATOR ---------- */
+
+.generator {
+  padding: 0 20px 20px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr 1.15fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.field label {
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  color: #647792;
+  margin: 0 0 7px 2px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7890ad;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.field select {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #d7e3f1;
+  border-radius: 8px;
+  background: var(--white);
+  color: #425673;
+  padding: 0 11px 0 34px;
+  font-size: 10px;
+  outline: none;
+}
+
+.field select:focus {
+  border-color: #80adf2;
+  box-shadow: 0 0 0 3px rgba(23, 105, 210, 0.08);
+}
+
+.generate-btn {
+  height: 38px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 16px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 7px 15px rgba(23, 105, 210, 0.2);
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------- REPORT CATEGORIES ---------- */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+
+.category {
+  min-height: 126px;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d9e6f5;
+  background: linear-gradient(145deg, #f8fbff, #f2f7ff);
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+.category:hover {
+  transform: translateY(-2px);
+  border-color: #a9c8f4;
+  box-shadow: 0 8px 18px rgba(50, 100, 170, 0.08);
+}
+
+.category-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.category:nth-child(1) .category-icon { background: #e3efff; color: #1769e0; }
+.category:nth-child(2) .category-icon { background: #def7ed; color: #08a36d; }
+.category:nth-child(3) .category-icon { background: #ffe7e7; color: #ef4444; }
+.category:nth-child(4) .category-icon { background: #eee4ff; color: #7c3aed; }
+.category:nth-child(5) .category-icon { background: #def7fa; color: #0891b2; }
+.category:nth-child(6) .category-icon { background: #e4edff; color: #315fc9; }
+
+.category h3 {
+  font-size: 10px;
+  line-height: 1.35;
+  font-weight: 800;
+}
+
+.category p {
+  font-size: 8px;
+  color: #7788a0;
+  line-height: 1.45;
+  margin-top: 5px;
+}
+
+.category-arrow {
+  position: absolute;
+  right: 12px;
+  top: 17px;
+  color: #5075a7;
+  font-size: 11px;
+}
+
+/* ---------- LOWER AREA ---------- */
+
+.lower-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 0.78fr);
+  gap: 18px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  padding: 0 12px 12px;
+}
+
+table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  background: #f5f8fc;
+  color: #71839d;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.25px;
+  padding: 10px 9px;
+  font-weight: 800;
+}
+
+td {
+  border-bottom: 1px solid #edf2f7;
+  padding: 11px 9px;
+  font-size: 9px;
+  color: #536883;
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: #f9fbfe;
+}
+
+.report-name {
+  color: #263e60;
+  font-weight: 700;
+}
+
+.report-name i {
+  color: var(--primary);
+  margin-right: 7px;
+}
+
+.tag {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.tag-progress { background: #e8f1ff; color: #1769e0; }
+.tag-financial { background: #e4f8f0; color: #079669; }
+.tag-risk { background: #ffe8e8; color: #df3b3b; }
+.tag-state { background: #eee6ff; color: #7040cf; }
+.tag-district { background: #e1f7f9; color: #087f98; }
+.tag-ai { background: #e6ecff; color: #4c61c8; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.status.completed { background: #e5f8f0; color: #0a9b6c; }
+.status.processing { background: #fff2d8; color: #bd7900; }
+.status.pending { background: #edf1f6; color: #6c7c91; }
+
+.status i {
+  font-size: 6px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.table-action {
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.table-action.delete {
+  color: var(--danger);
+}
+
+.table-action:disabled {
+  color: #b9c4d1;
+  cursor: not-allowed;
+}
+
+/* ---------- AI INSIGHTS ---------- */
+
+.insight-list {
+  padding: 0 16px 16px;
+}
+
+.insight {
+  border-radius: 10px;
+  padding: 13px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+}
+
+.insight:last-child {
+  margin-bottom: 0;
+}
+
+.insight-top {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.insight-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.insight h3 {
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.insight p {
+  color: #667b96;
+  font-size: 8.5px;
+  line-height: 1.55;
+}
+
+.insight.positive { background: #effbf7; border-color: #d6f2e7; }
+.insight.positive .insight-icon { color: #079b6d; background: #d9f6e9; }
+.insight.positive h3 { color: #078e64; }
+
+.insight.warning { background: #fff9ed; border-color: #f9e9bf; }
+.insight.warning .insight-icon { color: #d88400; background: #ffedc6; }
+.insight.warning h3 { color: #ca7900; }
+
+.insight.recommendation { background: #eef6ff; border-color: #d8eaff; }
+.insight.recommendation .insight-icon { color: var(--primary); background: #dcecff; }
+.insight.recommendation h3 { color: var(--primary); }
+
+.demo-note {
+  text-align: center;
+  color: #8a99ad;
+  font-size: 9px;
+  padding: 3px 0 12px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1200px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .filter-grid { grid-template-columns: repeat(3, 1fr); }
+  .generate-btn { width: 100%; }
+  .category-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 800px) {
+  .lower-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 650px) {
+  .stats-grid,
+  .category-grid,
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card { min-height: 125px; }
+
+  .generator { padding: 0 15px 15px; }
+  .category-grid { padding: 0 15px 15px; }
+}

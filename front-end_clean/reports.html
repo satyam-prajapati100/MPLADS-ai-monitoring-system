@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPLADS | Reports</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/reports.css">
+</head>
+
+<body data-page="reports">
+
+  <div id="app-shell"></div>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div class="top-left">
+        <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+        <div class="page-title">
+          <h1>Reports</h1>
+          <p>Generate and manage MPLADS monitoring reports</p>
+        </div>
+      </div>
+      <div id="top-actions-root"></div>
+    </header>
+
+    <section class="content">
+
+      <!-- STATISTICS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-file-lines"></i></div>
+          <div>
+            <div class="stat-label">Total Reports</div>
+            <div class="stat-value" data-count="248">0</div>
+            <div class="stat-change up">
+              <i class="fa-solid fa-arrow-trend-up"></i> +12%
+              <span class="stat-sub">vs last month</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-regular fa-calendar-check"></i></div>
+          <div>
+            <div class="stat-label">Generated Today</div>
+            <div class="stat-value" data-count="18">0</div>
+            <div class="stat-change up">
+              <i class="fa-solid fa-arrow-trend-up"></i> +5%
+              <span class="stat-sub">vs yesterday</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-regular fa-clock"></i></div>
+          <div>
+            <div class="stat-label">Scheduled Reports</div>
+            <div class="stat-value" data-count="24">0</div>
+            <div class="stat-change up">
+              <i class="fa-solid fa-arrow-trend-up"></i> +8%
+              <span class="stat-sub">vs last week</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div>
+            <div class="stat-label">Pending Reports</div>
+            <div class="stat-value" data-count="6">0</div>
+            <div class="stat-change down">
+              <i class="fa-solid fa-arrow-trend-down"></i> -40%
+              <span class="stat-sub">vs last week</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORT GENERATOR -->
+      <section class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <h3>Generate New Report</h3>
+            <p>Select parameters to generate a monitoring report</p>
+          </div>
+        </div>
+
+        <div class="generator">
+          <div class="filter-grid">
+            <div class="field">
+              <label>REPORT TYPE</label>
+              <div class="input-wrap">
+                <i class="fa-regular fa-file"></i>
+                <select id="reportType">
+                  <option value="">Select Report Type</option>
+                  <option>Project Progress Report</option>
+                  <option>Financial Utilization Report</option>
+                  <option>Risk & Anomaly Report</option>
+                  <option>State Performance Report</option>
+                  <option>District Performance Report</option>
+                  <option>AI Monitoring Report</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>STATE</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-location-dot"></i>
+                <select id="state">
+                  <option>All States</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Rajasthan</option>
+                  <option>Uttar Pradesh</option>
+                  <option>Maharashtra</option>
+                  <option>Gujarat</option>
+                  <option>Bihar</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>DISTRICT</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-building"></i>
+                <select id="district">
+                  <option>All Districts</option>
+                  <option>Bhopal</option>
+                  <option>Indore</option>
+                  <option>Jaipur</option>
+                  <option>Lucknow</option>
+                  <option>Pune</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>DATE RANGE</label>
+              <div class="input-wrap">
+                <i class="fa-regular fa-calendar"></i>
+                <select id="dateRange">
+                  <option>Last 30 Days</option>
+                  <option>Last 7 Days</option>
+                  <option>Last 3 Months</option>
+                  <option>Last 6 Months</option>
+                  <option>Current Financial Year</option>
+                  <option>Custom Range</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>PROJECT STATUS</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-circle-check"></i>
+                <select id="projectStatus">
+                  <option>All Status</option>
+                  <option>Completed</option>
+                  <option>In Progress</option>
+                  <option>Delayed</option>
+                  <option>Pending</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>RISK LEVEL</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <select id="riskLevel">
+                  <option>All Risk Levels</option>
+                  <option>High Risk</option>
+                  <option>Medium Risk</option>
+                  <option>Low Risk</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="generate-btn" onclick="generateReport()">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              Generate Report
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REPORT CATEGORIES -->
+      <section class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <h3>Report Categories</h3>
+            <p>Choose from different types of reports</p>
+          </div>
+        </div>
+
+        <div class="category-grid">
+          <div class="category" onclick="selectReport('Project Progress Report')">
+            <i class="fa-solid fa-chevron-right category-arrow"></i>
+            <div class="category-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <h3>Project Progress Report</h3>
+            <p>Overall project status and progress</p>
+          </div>
+
+          <div class="category" onclick="selectReport('Financial Utilization Report')">
+            <i class="fa-solid fa-chevron-right category-arrow"></i>
+            <div class="category-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <h3>Financial Utilization Report</h3>
+            <p>Fund release and expenditure analysis</p>
+          </div>
+
+          <div class="category" onclick="selectReport('Risk & Anomaly Report')">
+            <i class="fa-solid fa-chevron-right category-arrow"></i>
+            <div class="category-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>Risk & Anomaly Report</h3>
+            <p>Risk alerts and AI-detected anomalies</p>
+          </div>
+
+          <div class="category" onclick="selectReport('State Performance Report')">
+            <i class="fa-solid fa-chevron-right category-arrow"></i>
+            <div class="category-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3>State Performance Report</h3>
+            <p>State-wise comparative analysis</p>
+          </div>
+
+          <div class="category" onclick="selectReport('District Performance Report')">
+            <i class="fa-solid fa-chevron-right category-arrow"></i>
+            <div class="category-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h3>District Performance Report</h3>
+            <p>District-wise project performance</p>
+          </div>
+
+          <div class="category" onclick="selectReport('AI Monitoring Report')">
+            <i class="fa-solid fa-chevron-right category-arrow"></i>
+            <div class="category-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>AI Monitoring Report</h3>
+            <p>AI insights and recommendations</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOWER SECTION -->
+      <div class="lower-grid">
+
+        <!-- RECENT REPORTS -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h3>Recent Reports</h3>
+              <p>View and manage your recently generated reports</p>
+            </div>
+            <button class="view-btn" onclick="viewAllReports()">
+              View All Reports <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Report Name</th>
+                  <th>Type</th>
+                  <th>State</th>
+                  <th>Date Generated</th>
+                  <th>Generated By</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="report-name"><i class="fa-regular fa-file-lines"></i> MPLADS Project Progress - Mar 2026</td>
+                  <td><span class="tag tag-progress">Progress</span></td>
+                  <td>Madhya Pradesh</td>
+                  <td>15 Mar 2026, 10:24 AM</td>
+                  <td>Central Officer</td>
+                  <td><span class="status completed"><i class="fa-solid fa-circle"></i> Completed</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="table-action" onclick="viewReport('MPLADS Project Progress - Mar 2026')"><i class="fa-regular fa-eye"></i></button>
+                      <button class="table-action" onclick="downloadReport('MPLADS Project Progress - Mar 2026')"><i class="fa-solid fa-download"></i></button>
+                      <button class="table-action delete" onclick="deleteReport(this)"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="report-name"><i class="fa-solid fa-chart-column"></i> Fund Utilization Report - FY 2025-26</td>
+                  <td><span class="tag tag-financial">Financial</span></td>
+                  <td>Gujarat</td>
+                  <td>14 Mar 2026, 04:32 PM</td>
+                  <td>Central Officer</td>
+                  <td><span class="status completed"><i class="fa-solid fa-circle"></i> Completed</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="table-action" onclick="viewReport('Fund Utilization Report - FY 2025-26')"><i class="fa-regular fa-eye"></i></button>
+                      <button class="table-action" onclick="downloadReport('Fund Utilization Report - FY 2025-26')"><i class="fa-solid fa-download"></i></button>
+                      <button class="table-action delete" onclick="deleteReport(this)"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="report-name"><i class="fa-solid fa-triangle-exclamation"></i> Risk Analysis Report - Feb 2026</td>
+                  <td><span class="tag tag-risk">Risk</span></td>
+                  <td>Uttar Pradesh</td>
+                  <td>12 Mar 2026, 11:17 AM</td>
+                  <td>Central Officer</td>
+                  <td><span class="status completed"><i class="fa-solid fa-circle"></i> Completed</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="table-action" onclick="viewReport('Risk Analysis Report - Feb 2026')"><i class="fa-regular fa-eye"></i></button>
+                      <button class="table-action" onclick="downloadReport('Risk Analysis Report - Feb 2026')"><i class="fa-solid fa-download"></i></button>
+                      <button class="table-action delete" onclick="deleteReport(this)"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="report-name"><i class="fa-solid fa-map-location-dot"></i> State Performance Report - All India</td>
+                  <td><span class="tag tag-state">State</span></td>
+                  <td>All States</td>
+                  <td>10 Mar 2026, 02:45 PM</td>
+                  <td>Central Officer</td>
+                  <td><span class="status processing"><i class="fa-solid fa-circle"></i> Processing</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="table-action" onclick="viewReport('State Performance Report - All India')"><i class="fa-regular fa-eye"></i></button>
+                      <button class="table-action" disabled><i class="fa-solid fa-download"></i></button>
+                      <button class="table-action delete" onclick="deleteReport(this)"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="report-name"><i class="fa-solid fa-building"></i> District Performance Report - MP</td>
+                  <td><span class="tag tag-district">District</span></td>
+                  <td>Madhya Pradesh</td>
+                  <td>08 Mar 2026, 09:21 AM</td>
+                  <td>Central Officer</td>
+                  <td><span class="status completed"><i class="fa-solid fa-circle"></i> Completed</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="table-action" onclick="viewReport('District Performance Report - MP')"><i class="fa-regular fa-eye"></i></button>
+                      <button class="table-action" onclick="downloadReport('District Performance Report - MP')"><i class="fa-solid fa-download"></i></button>
+                      <button class="table-action delete" onclick="deleteReport(this)"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="report-name"><i class="fa-solid fa-brain"></i> AI Monitoring Report - Latest</td>
+                  <td><span class="tag tag-ai">AI</span></td>
+                  <td>All States</td>
+                  <td>05 Mar 2026, 06:33 PM</td>
+                  <td>Central Officer</td>
+                  <td><span class="status pending"><i class="fa-solid fa-circle"></i> Pending</span></td>
+                  <td>
+                    <div class="actions">
+                      <button class="table-action" onclick="viewReport('AI Monitoring Report - Latest')"><i class="fa-regular fa-eye"></i></button>
+                      <button class="table-action" disabled><i class="fa-solid fa-download"></i></button>
+                      <button class="table-action delete" onclick="deleteReport(this)"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- AI INSIGHTS -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <h3>AI Report Insights</h3>
+              <p>Key findings from latest analysis</p>
+            </div>
+          </div>
+
+          <div class="insight-list">
+            <div class="insight positive">
+              <div class="insight-top">
+                <div class="insight-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                <div>
+                  <h3>Positive Trend</h3>
+                  <p>Project completion rate has increased by 8.5% compared to last month, with improved fund utilization in 4 out of 6 states.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="insight warning">
+              <div class="insight-top">
+                <div class="insight-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div>
+                  <h3>Risk Finding</h3>
+                  <p>15 projects show unusual expenditure patterns and require further review. The demo dataset shows concentration in selected states.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="insight recommendation">
+              <div class="insight-top">
+                <div class="insight-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div>
+                  <h3>Recommendation</h3>
+                  <p>Focus on high-risk projects and compare expenditure, progress and timelines with similar projects before inspection.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="demo-note">
+        Demo data shown for UI prototype. Connect this page to the backend/API for live MPLADS data.
+      </div>
+
+      <div id="footer-root"></div>
+
+    </section>
+
+  </main>
+
+  <script src="js/common.js"></script>
+  <script src="js/reports.js"></script>
+
+</body>
+</html>

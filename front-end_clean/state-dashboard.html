@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>State Monitoring Dashboard | MPLADS</title>
+
+    <!-- Inter Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/common.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="css/state-dashboard.css">
+</head>
+
+
+<body data-page="state-dashboard">
+
+    <!-- =====================================================
+         COMMON SIDEBAR
+         common.js will create the sidebar here
+    ====================================================== -->
+    <div id="app-shell"></div>
+
+
+    <!-- =====================================================
+         MAIN AREA
+         Important: Sidebar is fixed at 255px.
+         .main gets margin-left from common.css.
+    ====================================================== -->
+    <div class="main">
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+        <header class="topbar">
+
+            <div class="top-left">
+
+                <!-- Mobile Menu -->
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    type="button"
+                    aria-label="Open navigation menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        State Monitoring Dashboard
+                    </h1>
+
+                    <p>
+                        Madhya Pradesh • State-level MPLADS monitoring
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- common.js inserts notifications + logout -->
+            <div id="top-actions-root"></div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+        <main class="content">
+
+
+            <!-- =================================================
+                 STATE HEADER
+            ================================================== -->
+            <section class="state-header">
+
+                <div class="state-header-left">
+
+                    <div class="state-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <h2>Madhya Pradesh</h2>
+
+                        <p>
+                            State Monitoring Overview
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="state-header-right">
+
+                    <span class="status-pill">
+                        <span class="status-dot"></span>
+                        Monitoring Active
+                    </span>
+
+                    <span class="last-updated">
+                        <i class="fa-regular fa-clock"></i>
+                        Updated today
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 KPI CARDS
+            ================================================== -->
+            <section class="kpi-grid">
+
+
+                <!-- Total Projects -->
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <div>
+                            <p class="kpi-label">
+                                Total Projects
+                            </p>
+
+                            <h2 id="totalProjects">
+                                0
+                            </h2>
+
+                            <span class="kpi-sub">
+                                Across Madhya Pradesh
+                            </span>
+                        </div>
+
+                        <div class="kpi-icon blue">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="kpi-footer positive">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        Active monitoring
+                    </div>
+
+                </div>
+
+
+
+                <!-- Completed -->
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <div>
+                            <p class="kpi-label">
+                                Completed Projects
+                            </p>
+
+                            <h2 id="completedProjects">
+                                0
+                            </h2>
+
+                            <span class="kpi-sub">
+                                Successfully completed
+                            </span>
+                        </div>
+
+                        <div class="kpi-icon green">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="kpi-footer positive">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        Completion improving
+                    </div>
+
+                </div>
+
+
+
+                <!-- In Progress -->
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <div>
+                            <p class="kpi-label">
+                                Projects In Progress
+                            </p>
+
+                            <h2 id="inProgressProjects">
+                                0
+                            </h2>
+
+                            <span class="kpi-sub">
+                                Currently under execution
+                            </span>
+                        </div>
+
+                        <div class="kpi-icon orange">
+                            <i class="fa-solid fa-spinner"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="kpi-footer neutral">
+                        <i class="fa-solid fa-clock"></i>
+                        Under monitoring
+                    </div>
+
+                </div>
+
+
+
+                <!-- High Risk -->
+                <div class="kpi-card risk-card">
+
+                    <div class="kpi-top">
+
+                        <div>
+                            <p class="kpi-label">
+                                High-Risk Projects
+                            </p>
+
+                            <h2 id="highRiskProjects">
+                                0
+                            </h2>
+
+                            <span class="kpi-sub">
+                                Require attention
+                            </span>
+                        </div>
+
+                        <div class="kpi-icon red">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="kpi-footer negative">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        AI risk monitoring
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 OVERVIEW GRID
+            ================================================== -->
+            <section class="overview-grid">
+
+
+                <!-- FUND UTILIZATION -->
+                <div class="panel utilization-panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+
+                            <h3>
+                                <i class="fa-solid fa-indian-rupee-sign"></i>
+                                Fund Utilization
+                            </h3>
+
+                            <p>
+                                State-level financial utilization
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="utilization-content">
+
+                        <div class="utilization-circle">
+
+                            <div class="circle-inner">
+
+                                <strong id="utilizationValue">
+                                    78.6%
+                                </strong>
+
+                                <span>
+                                    Utilized
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="fund-details">
+
+                            <div class="fund-row">
+
+                                <span>
+                                    Funds Released
+                                </span>
+
+                                <strong id="fundReleased">
+                                    ₹1,248 Cr
+                                </strong>
+
+                            </div>
+
+
+                            <div class="fund-row">
+
+                                <span>
+                                    Expenditure
+                                </span>
+
+                                <strong id="fundExpenditure">
+                                    ₹981 Cr
+                                </strong>
+
+                            </div>
+
+
+                            <div class="fund-row">
+
+                                <span>
+                                    Remaining
+                                </span>
+
+                                <strong id="fundRemaining">
+                                    ₹267 Cr
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETION -->
+                <div class="panel completion-panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+
+                            <h3>
+                                <i class="fa-solid fa-chart-line"></i>
+                                Project Completion
+                            </h3>
+
+                            <p>
+                                State-wide completion progress
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="completion-content">
+
+                        <div class="completion-number">
+                            <strong id="completionRate">
+                                62.3%
+                            </strong>
+
+                            <span>
+                                Overall completion rate
+                            </span>
+                        </div>
+
+
+                        <div class="progress large-progress">
+
+                            <div
+                                class="progress-bar"
+                                id="completionBar"
+                                style="width: 0%;"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="completion-stats">
+
+                            <div>
+                                <strong id="completedCount">
+                                    0
+                                </strong>
+
+                                <span>
+                                    Completed
+                                </span>
+                            </div>
+
+
+                            <div>
+                                <strong id="remainingCount">
+                                    0
+                                </strong>
+
+                                <span>
+                                    Remaining
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DELAYED PROJECTS -->
+                <div class="panel delayed-panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+
+                            <h3>
+                                <i class="fa-solid fa-clock"></i>
+                                Delayed Projects
+                            </h3>
+
+                            <p>
+                                Projects requiring monitoring
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="view-btn"
+                            onclick="window.location.href='risk-alerts.html'"
+                        >
+                            View All
+                        </button>
+
+                    </div>
+
+
+                    <div class="delayed-content">
+
+                        <div class="delay-number">
+                            <strong id="delayedProjects">
+                                0
+                            </strong>
+
+                            <span>
+                                Delayed projects
+                            </span>
+                        </div>
+
+
+                        <div class="delay-warning">
+
+                            <div class="warning-icon">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Attention Required
+                                </strong>
+
+                                <p>
+                                    AI has identified projects
+                                    with possible schedule delays.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DISTRICT PERFORMANCE + RISK
+            ================================================== -->
+            <section class="two-column-grid">
+
+
+                <!-- DISTRICT PERFORMANCE -->
+                <div class="panel district-panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+
+                            <h3>
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                District Performance
+                            </h3>
+
+                            <p>
+                                Monitoring performance across districts
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="view-btn"
+                            onclick="window.location.href='analytics.html'"
+                        >
+                            Analytics
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>District</th>
+                                    <th>Projects</th>
+                                    <th>Completion</th>
+                                    <th>Utilization</th>
+                                    <th>Risk</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="districtTable">
+
+                                <tr>
+
+                                    <td>
+                                        <div class="district-name">
+                                            <span class="district-marker"></span>
+                                            Bhopal
+                                        </div>
+                                    </td>
+
+                                    <td>342</td>
+
+                                    <td>
+                                        <div class="table-progress">
+
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar"
+                                                    style="width:78%"
+                                                ></div>
+                                            </div>
+
+                                            <span>78%</span>
+
+                                        </div>
+                                    </td>
+
+                                    <td>84%</td>
+
+                                    <td>
+                                        <span class="risk-badge low">
+                                            Low
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="district-name">
+                                            <span class="district-marker"></span>
+                                            Indore
+                                        </div>
+                                    </td>
+
+                                    <td>418</td>
+
+                                    <td>
+                                        <div class="table-progress">
+
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar"
+                                                    style="width:72%"
+                                                ></div>
+                                            </div>
+
+                                            <span>72%</span>
+
+                                        </div>
+                                    </td>
+
+                                    <td>81%</td>
+
+                                    <td>
+                                        <span class="risk-badge medium">
+                                            Medium
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="district-name">
+                                            <span class="district-marker"></span>
+                                            Jabalpur
+                                        </div>
+                                    </td>
+
+                                    <td>287</td>
+
+                                    <td>
+                                        <div class="table-progress">
+
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar"
+                                                    style="width:65%"
+                                                ></div>
+                                            </div>
+
+                                            <span>65%</span>
+
+                                        </div>
+                                    </td>
+
+                                    <td>76%</td>
+
+                                    <td>
+                                        <span class="risk-badge medium">
+                                            Medium
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="district-name">
+                                            <span class="district-marker"></span>
+                                            Gwalior
+                                        </div>
+                                    </td>
+
+                                    <td>256</td>
+
+                                    <td>
+                                        <div class="table-progress">
+
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar"
+                                                    style="width:59%"
+                                                ></div>
+                                            </div>
+
+                                            <span>59%</span>
+
+                                        </div>
+                                    </td>
+
+                                    <td>69%</td>
+
+                                    <td>
+                                        <span class="risk-badge high">
+                                            High
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="district-name">
+                                            <span class="district-marker"></span>
+                                            Ujjain
+                                        </div>
+                                    </td>
+
+                                    <td>231</td>
+
+                                    <td>
+                                        <div class="table-progress">
+
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar"
+                                                    style="width:68%"
+                                                ></div>
+                                            </div>
+
+                                            <span>68%</span>
+
+                                        </div>
+                                    </td>
+
+                                    <td>74%</td>
+
+                                    <td>
+                                        <span class="risk-badge low">
+                                            Low
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RISK MONITORING -->
+                <div class="panel risk-panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+
+                            <h3>
+                                <i class="fa-solid fa-shield-halved"></i>
+                                Risk Monitoring
+                            </h3>
+
+                            <p>
+                                AI-generated project risk distribution
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="risk-content">
+
+
+                        <div class="risk-summary">
+
+                            <div class="risk-total">
+
+                                <strong id="riskTotal">
+                                    0
+                                </strong>
+
+                                <span>
+                                    Projects analysed
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-bars">
+
+
+                            <!-- HIGH -->
+                            <div class="risk-row">
+
+                                <div class="risk-label">
+
+                                    <span class="risk-dot high-dot"></span>
+
+                                    <span>
+                                        High Risk
+                                    </span>
+
+                                    <strong id="highRiskCount">
+                                        0
+                                    </strong>
+
+                                </div>
+
+                                <div class="risk-progress">
+
+                                    <div
+                                        class="risk-progress-fill high-fill"
+                                        id="highRiskBar"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- MEDIUM -->
+                            <div class="risk-row">
+
+                                <div class="risk-label">
+
+                                    <span class="risk-dot medium-dot"></span>
+
+                                    <span>
+                                        Medium Risk
+                                    </span>
+
+                                    <strong id="mediumRiskCount">
+                                        0
+                                    </strong>
+
+                                </div>
+
+                                <div class="risk-progress">
+
+                                    <div
+                                        class="risk-progress-fill medium-fill"
+                                        id="mediumRiskBar"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- LOW -->
+                            <div class="risk-row">
+
+                                <div class="risk-label">
+
+                                    <span class="risk-dot low-dot"></span>
+
+                                    <span>
+                                        Low Risk
+                                    </span>
+
+                                    <strong id="lowRiskCount">
+                                        0
+                                    </strong>
+
+                                </div>
+
+                                <div class="risk-progress">
+
+                                    <div
+                                        class="risk-progress-fill low-fill"
+                                        id="lowRiskBar"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="full-risk-btn"
+                            onclick="window.location.href='risk-alerts.html'"
+                        >
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            Open Risk Alerts
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 AI MONITORING INSIGHTS
+            ================================================== -->
+            <section class="panel ai-panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+
+                        <h3>
+                            <i class="fa-solid fa-brain"></i>
+                            AI Monitoring Insights
+                        </h3>
+
+                        <p>
+                            Automated analysis of state-level MPLADS data
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="view-btn"
+                        onclick="window.location.href='ai-insights.html'"
+                    >
+                        View AI Insights
+                    </button>
+
+                </div>
+
+
+                <div class="ai-grid">
+
+
+                    <!-- Insight 1 -->
+                    <div class="ai-card">
+
+                        <div class="ai-icon blue">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+                        <div>
+
+                            <span class="ai-tag">
+                                TREND
+                            </span>
+
+                            <h4>
+                                Project completion trend
+                            </h4>
+
+                            <p>
+                                Overall project completion has
+                                increased compared with the
+                                previous monitoring period.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Insight 2 -->
+                    <div class="ai-card warning">
+
+                        <div class="ai-icon orange">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div>
+
+                            <span class="ai-tag warning-tag">
+                                ATTENTION
+                            </span>
+
+                            <h4>
+                                Delayed project pattern detected
+                            </h4>
+
+                            <p>
+                                Several projects require additional
+                                review because their progress is
+                                behind the expected timeline.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Insight 3 -->
+                    <div class="ai-card">
+
+                        <div class="ai-icon green">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+
+                        <div>
+
+                            <span class="ai-tag success-tag">
+                                RECOMMENDATION
+                            </span>
+
+                            <h4>
+                                Prioritize high-risk projects
+                            </h4>
+
+                            <p>
+                                Monitoring teams can review high-risk
+                                projects first using the AI-generated
+                                priority list.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RECENT PROJECTS
+            ================================================== -->
+            <section class="panel projects-panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+
+                        <h3>
+                            <i class="fa-solid fa-building"></i>
+                            Recent Projects
+                        </h3>
+
+                        <p>
+                            Recently monitored MPLADS projects
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="view-btn"
+                        onclick="window.location.href='projects.html'"
+                    >
+                        View All Projects
+                    </button>
+
+                </div>
+
+
+                <div class="recent-projects">
+
+
+                    <!-- Project -->
+                    <div class="project-item">
+
+                        <div class="project-icon">
+                            <i class="fa-solid fa-hospital"></i>
+                        </div>
+
+                        <div class="project-info">
+
+                            <h4>
+                                Community Health Centre
+                            </h4>
+
+                            <p>
+                                Bhopal • MPL-2026-00124
+                            </p>
+
+                        </div>
+
+                        <div class="project-progress">
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:62%"
+                                ></div>
+
+                            </div>
+
+                            <span>
+                                62%
+                            </span>
+
+                        </div>
+
+                        <span class="risk-badge high">
+                            High
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Project -->
+                    <div class="project-item">
+
+                        <div class="project-icon">
+                            <i class="fa-solid fa-road"></i>
+                        </div>
+
+                        <div class="project-info">
+
+                            <h4>
+                                Rural Road Development
+                            </h4>
+
+                            <p>
+                                Gwalior • MPL-2026-00481
+                            </p>
+
+                        </div>
+
+                        <div class="project-progress">
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:38%"
+                                ></div>
+
+                            </div>
+
+                            <span>
+                                38%
+                            </span>
+
+                        </div>
+
+                        <span class="risk-badge high">
+                            High
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Project -->
+                    <div class="project-item">
+
+                        <div class="project-icon">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+
+                        <div class="project-info">
+
+                            <h4>
+                                Government School Building
+                            </h4>
+
+                            <p>
+                                Indore • MPL-2026-00672
+                            </p>
+
+                        </div>
+
+                        <div class="project-progress">
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:71%"
+                                ></div>
+
+                            </div>
+
+                            <span>
+                                71%
+                            </span>
+
+                        </div>
+
+                        <span class="risk-badge medium">
+                            Medium
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Project -->
+                    <div class="project-item">
+
+                        <div class="project-icon">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+
+                        <div class="project-info">
+
+                            <h4>
+                                Drinking Water Facility
+                            </h4>
+
+                            <p>
+                                Ujjain • MPL-2026-00913
+                            </p>
+
+                        </div>
+
+                        <div class="project-progress">
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:54%"
+                                ></div>
+
+                            </div>
+
+                            <span>
+                                54%
+                            </span>
+
+                        </div>
+
+                        <span class="risk-badge medium">
+                            Medium
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FOOTER
+                 common.js replaces this element
+            ================================================== -->
+            <div id="footer-root"></div>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         COMMON JS
+    ====================================================== -->
+    <script src="js/common.js"></script>
+
+    <!-- =====================================================
+         STATE DASHBOARD JS
+    ====================================================== -->
+    <script src="js/state-dashboard.js"></script>
+
+</body>
+
+</html>

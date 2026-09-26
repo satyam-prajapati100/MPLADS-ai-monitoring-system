@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPLADS | Site Monitoring</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/site_monitoring.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/site_monitoring.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body data-page="site-monitoring">
+
+    <div id="app-shell"></div>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div class="top-left">
+                <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="page-title">
+                    <h1>Site Monitoring</h1>
+                    <p>AI-assisted before &amp; after satellite verification of MPLADS work sites</p>
+                </div>
+            </div>
+            <div id="top-actions-root"></div>
+        </header>
+
+        <section class="content">
+
+            <!-- TOP STATS -->
+            <div class="stat-row">
+
+                <div class="stat-tile">
+                    <div class="stat-tile-icon blue"><i class="fa-solid fa-camera-retro"></i></div>
+                    <div>
+                        <div class="stat-tile-label">Total Sites Monitored</div>
+                        <div class="stat-tile-value-row">
+                            <span class="stat-tile-value">342</span>
+                            <span class="stat-pill green">+6.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-tile">
+                    <div class="stat-tile-icon blue"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <div class="stat-tile-label">Verified Matches</div>
+                        <div class="stat-tile-value-row">
+                            <span class="stat-tile-value">268</span>
+                            <span class="stat-pill green">Healthy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-tile">
+                    <div class="stat-tile-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div>
+                        <div class="stat-tile-label">Discrepancies Found</div>
+                        <div class="stat-tile-value-row">
+                            <span class="stat-tile-value">41</span>
+                            <span class="stat-pill red">Needs Review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-tile">
+                    <div class="stat-tile-icon orange"><i class="fa-regular fa-clock"></i></div>
+                    <div>
+                        <div class="stat-tile-label">Pending Review</div>
+                        <div class="stat-tile-value-row">
+                            <span class="stat-tile-value">33</span>
+                            <span class="stat-pill orange">Attention</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- MAIN GRID -->
+            <div class="dashboard-layout">
+
+                <div class="dashboard-main">
+
+                    <div class="map-satellite-row">
+
+                        <!-- MONITORED LOCATIONS -->
+                        <section class="panel map-card">
+                            <div class="panel-header">
+                                <div class="panel-title">
+                                    <h3><i class="fa-solid fa-map"></i> Monitored Locations</h3>
+                                    <p>Sites with before &amp; after satellite coverage</p>
+                                </div>
+                                <button class="view-btn"
+                                    onclick="alert('Will link to the full site list once that view is ready.')">
+                                    <i class="fa-regular fa-eye"></i> View All Sites
+                                </button>
+                            </div>
+
+                            <div class="map-body">
+
+                                 <div class="map-canvas" id="indiaMap"></div>
+
+                            </div>
+                        </section>
+
+                        <!-- SATELLITE IMAGE -->
+                        <section class="panel satellite-card">
+                            <div class="panel-header">
+                                <div class="panel-title">
+                                    <h3><i class="fa-solid fa-satellite"></i> Satellite Image</h3>
+                                    <p>Latest imagery of selected site</p>
+                                </div>
+                                <button class="view-btn" id="compareViewBtn">
+                                    <i class="fa-solid fa-arrows-left-right"></i> Compare View
+                                </button>
+                            </div>
+
+                            <div class="satellite-body">
+
+                                <div class="satellite-project-row">
+                                    <div>
+                                        <div class="satellite-project-name"><i class="fa-solid fa-location-dot"></i>
+                                            Community Health Centre (CHC)</div>
+                                        <div class="satellite-project-loc">Tezpur, Assam</div>
+                                    </div>
+                                    <div class="satellite-project-id">MPL-2026-00124</div>
+                                </div>
+
+                                <div class="compare-slider" id="satelliteSlider">
+                                    <img class="compare-img compare-base" src="imags.png" alt="After photo of the site">
+                                    <div class="compare-overlay">
+                                        <img class="compare-img" src="imagbefore.png" alt="Before photo of the site">
+                                    </div>
+                                    <span class="compare-tag tag-before">Before · 12 Mar 2025</span>
+                                    <span class="compare-tag tag-after">After · 12 Sep 2026</span>
+                                    <input type="range" class="compare-range" min="0" max="100" value="50"
+                                        aria-label="Drag to compare before and after satellite imagery">
+                                </div>
+
+                                <div class="satellite-meta-row">
+                                    <div class="satellite-meta">
+                                        <i class="fa-regular fa-calendar"></i>
+                                        <div>
+                                            <span class="meta-label">Image Date</span>
+                                            <span class="meta-value">12 Sep 2026</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="satellite-meta">
+                                        <i class="fa-solid fa-arrow-trend-up"></i>
+                                        <div>
+                                            <span class="meta-label">Change Detected</span>
+                                            <span class="meta-value change">34%</span>
+                                        </div>
+                                    </div>
+
+                                    <button class="view-btn"
+                                        onclick="alert('Will link to this site on the full map once that view is ready.')">
+                                        <i class="fa-solid fa-location-crosshairs"></i> View on Map
+                                    </button>
+                                </div>
+
+                                <div class="ai-insight-box">
+                                    <div class="ai-insight-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                                    <div class="ai-insight-text">
+                                        <strong>AI Insight</strong>
+                                        <p>Construction activity appears consistent with reported progress.</p>
+                                    </div>
+                                    <span class="ai-insight-badge">No Mismatch</span>
+                                </div>
+
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!-- TIMELINE -->
+                    <section class="panel timeline-card">
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <h3><i class="fa-regular fa-clock"></i> Site Monitoring Timeline</h3>
+                            </div>
+                        </div>
+
+                        <div class="timeline">
+
+                            <div class="timeline-step done">
+                                <div class="timeline-dot"><i class="fa-solid fa-check"></i></div>
+                                <div class="timeline-label">Baseline Captured</div>
+                                <div class="timeline-date">12 Mar 2025</div>
+                            </div>
+
+                            <div class="timeline-step done">
+                                <div class="timeline-dot"><i class="fa-solid fa-check"></i></div>
+                                <div class="timeline-label">Mid-Progress Scan</div>
+                                <div class="timeline-date">18 Jan 2026</div>
+                            </div>
+
+                            <div class="timeline-step done">
+                                <div class="timeline-dot"><i class="fa-solid fa-check"></i></div>
+                                <div class="timeline-label">Latest Scan</div>
+                                <div class="timeline-date">12 Sep 2026</div>
+                            </div>
+
+                            <div class="timeline-step active">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-label">AI Comparison</div>
+                                <div class="timeline-date">34% change</div>
+                            </div>
+
+                            <div class="timeline-step pending">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-label">Field Verification</div>
+                                <div class="timeline-date">Not scheduled</div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- SIDE COLUMN -->
+                <div class="dashboard-side">
+
+                    <section class="panel info-card">
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <h3><i class="fa-regular fa-file-lines"></i> Site Information</h3>
+                            </div>
+                        </div>
+
+                        <div class="info-list">
+                            <div class="info-row">
+                                <span class="info-label">Project Name</span>
+                                <span class="info-value">Community Health Centre (CHC)</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Work ID</span>
+                                <span class="info-value">MPL-2026-00124</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Tezpur, Assam</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Latitude</span>
+                                <span class="info-value">26.6333</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Longitude</span>
+                                <span class="info-value">92.7926</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Category</span>
+                                <span class="info-value">Health & Medical</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Implementing Agency</span>
+                                <span class="info-value">State Health Department</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel status-card">
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <h3><i class="fa-solid fa-circle-check"></i> Verification Status</h3>
+                            </div>
+                            <span class="status-pill">No Mismatch</span>
+                        </div>
+
+                        <div class="status-body">
+
+                            <div class="progress-block">
+                                <div class="progress-block-label">
+                                    <span>Visual Similarity to Reported Progress</span>
+                                    <span>91%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:91%"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-block">
+                                <div class="progress-block-label">
+                                    <span>Site Coverage (cloud-free imagery)</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width:85%"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <section class="panel recommendation-card">
+                        <div class="recommendation-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div>
+                            <strong>Recommendation</strong>
+                            <p>No physical verification needed this cycle — imagery matches reported progress.</p>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+            <div id="footer-root"></div>
+
+        </section>
+
+    </main>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/site_monitoring.js"></script>
+
+</body>
+
+</html>
